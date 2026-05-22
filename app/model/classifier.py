@@ -2,6 +2,10 @@ from transformers import pipeline
 import json
 import os
 from threading import Lock
+from dotenv import load_dotenv
+
+load_dotenv()
+hf_token = os.environ.get("HF_TOKEN")
 
 # Load dosha map
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,7 +25,8 @@ def get_classifier():
             print("Loading model...")  # за debug
             classifier = pipeline(
                 task="image-classification",
-                model="nateraw/food"
+                model="nateraw/food",
+                use_auth_token=hf_token
             )
     return classifier
 
