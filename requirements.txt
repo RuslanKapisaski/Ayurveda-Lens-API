@@ -6,3 +6,6 @@ pillow
 python-multipart
 numpy
 transformers
+dotenv
+threading
+json
