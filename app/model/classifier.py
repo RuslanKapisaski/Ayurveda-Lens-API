@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 HF_TOKEN = os.environ.get("HF_TOKEN")
-API_URL = "https://api-inference.huggingface.co/models/nateraw/food"
+API_URL = "https://router.huggingface.co/hf-inference/models/nateraw/food"
+
+print("HF TOKEN:", HF_TOKEN)
+print("API URL:", API_URL)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOSHA_MAP_PATH = os.path.join(BASE_DIR, "../data/dosha_map.json")
