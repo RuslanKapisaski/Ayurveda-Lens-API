@@ -22,12 +22,13 @@ def get_classifier():
     global classifier
     if classifier is None:
         with lock:
-            print("Loading model...")  # за debug
-            classifier = pipeline(
-                task="image-classification",
-                model="nateraw/food",
-                use_auth_token=hf_token
-            )
+            if classifier is None:
+                print("Loading model...")
+                classifier = pipeline(
+                    "image-classification",
+                    model="nateraw/food",
+                    token=hf_token
+                )
     return classifier
 
 def classify_image(tensor):
