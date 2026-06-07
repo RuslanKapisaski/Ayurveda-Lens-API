@@ -6,7 +6,7 @@ from app.model.classifier import classify_image
 router = APIRouter()
 
 @router.post("/scan")
-async def scan_food(file: UploadFile = File(...), current_user: dict = Depends(get_current_user())):
+async def scan_food(file: UploadFile = File(...), current_user: dict = Depends(get_current_user)):
     image_bytes = await file.read()
 
     result = classify_image(image_bytes)
