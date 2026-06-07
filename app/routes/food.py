@@ -12,8 +12,6 @@ async def scan_food(file: UploadFile = File(...), current_user: dict = Depends(g
     result = classify_image(image_bytes)
 
     return {
-        "food": result["food"],
-        "confidence": result["confidence"],
-        "dosha_recommendation": result["dosha"],
-        "userId": current_user["uid"]
+       **result,
+       "userId": current_user["uid"],
     }
